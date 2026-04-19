@@ -16,6 +16,10 @@ Usage:
 
 */
 
+
+-- ===============================================================================================
+-- Create Dimension: gold.dim_customers
+-- ===============================================================================================
 IF OBJECT_ID (' gold.dim_customers', 'V') IS NOT NULL
 	DROP VIEW  gold.dim_customers;
 
@@ -42,6 +46,9 @@ LEFT JOIN silver.erp_loc_a101 la
 On  c.cst_key = la.cid
 
 
+-- ===============================================================================================
+-- Create Dimension: gold.dim_products
+-- ===============================================================================================
 
 
 IF OBJECT_ID ('gold.dim_products', 'V') IS NOT NULL
@@ -68,7 +75,11 @@ ON pr.cat_id = pc.id
 WHERE prd_end_dt is null -- Filter out all historical data
 
 
+-- ===============================================================================================
+-- Create Dimension: gold.fact_sales
+-- ===============================================================================================
 
+	
 IF OBJECT_ID ('gold.fact_sales', 'V') IS NOT NULL
 	DROP VIEW gold.fact_sales;
 
